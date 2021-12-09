@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Learn DOM</title>
+	</head>
+
+	<body>
+		<p>
+			Here we will add a link to the 
+			<a href="https://www.mozilla.org/">
+				Mozilla homepage
+			</a>
+		</p>
+		<section>hoge</section>
+	</body>
+</html>
+
+<script>
+const link = document.querySelector('a')
+
+link.textContent = 'dom取得して書き換えました'
+link.href = 'https://developer.mozilla.org'
+
+const sect = document.querySelector('section')
+
+const para = document.createElement('p')
+para.textContent = 'add paragraph'
+
+sect.appendChild(para)
+
+const text = document.createTextNode('test text')
+
+const linkPara = document.querySelector('p')
+linkPara.appendChild(text)
+
+sect.appendChild(linkPara)
+sect.removeChild(linkPara)
+
+para.style.color = 'red'
+para.style.fontSize = '3rem'
+</script>
