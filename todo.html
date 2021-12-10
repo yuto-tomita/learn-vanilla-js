@@ -32,29 +32,43 @@
 
     <script>
 			const button = document.querySelector('button')
+			const textBox = document.getElementById('item')
+			const ul = document.querySelector('ul')
+
 			button.onclick = () => {
-				const ul = document.querySelector('ul')
+				addTodo()
+				resetTextBoxValue()
+			}
+
+			function addTodo() {
 				const li = document.createElement('li')
-				const inputText = document.getElementById('item')
-				const span = document.createElement('span')
-				// deleteボタンの要素作成
-				const removeButton = document.createElement('button')
-
-				removeButton.textContent = 'delete'
-
-				// span要素の中にremoveButtonを追加
-				span.appendChild(removeButton)
-				// textboxの値を取得して、valueをul要素ないにli要素として出力
-				li.textContent = inputText.value
+				const span = addDeleteButtonFromTodo()
+				
+				li.textContent = textBox.value
 				li.appendChild(span)
 				ul.appendChild(li)
+			}
 
+			function addDeleteButtonFromTodo() {
+				const removeButton = document.createElement('button')
+				const span = document.createElement('span')
+
+				removeButton.setAttribute('onclick', 'deleteTodo(event)')
+				// removebuttonに「delete」という文言を追加
+				removeButton.textContent = 'delete'
+				// span要素の中にremoveButtonを追加
+				span.appendChild(removeButton)
+
+				return span
+			}
+
+			function resetTextBoxValue() {
 				// textbox内を初期化
-				inputText.value = ''
+				textBox.value = ''
+			}
 
-				removeButton.onclick = () => {
-					ul.removeChild(li)
-				}
+			function deleteTodo(e) {
+				ul.removeChild(e.path[2])
 			}
     </script>
   </body>
