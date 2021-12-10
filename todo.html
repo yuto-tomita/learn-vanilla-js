@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>todo list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+			const button = document.querySelector('button')
+			button.onclick = () => {
+				const ul = document.querySelector('ul')
+				const li = document.createElement('li')
+				const inputText = document.getElementById('item')
+				const span = document.createElement('span')
+				// deleteボタンの要素作成
+				const removeButton = document.createElement('button')
+
+				removeButton.textContent = 'delete'
+
+				// span要素の中にremoveButtonを追加
+				span.appendChild(removeButton)
+				// textboxの値を取得して、valueをul要素ないにli要素として出力
+				li.textContent = inputText.value
+				li.appendChild(span)
+				ul.appendChild(li)
+
+				// textbox内を初期化
+				inputText.value = ''
+
+				removeButton.onclick = () => {
+					ul.removeChild(li)
+				}
+			}
+    </script>
+  </body>
+</html>
