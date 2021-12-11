@@ -45,7 +45,7 @@ function App() {
     setTodo(updateValueTodoList)
   }
 
-  const todoState = () => {
+  const getTodoOrUpdateForm = () => {
     return todo.map((val, key) => {
       if (val.isEditMode) {
         return (
@@ -92,7 +92,7 @@ function App() {
       </div>
 
       <ul>
-        {todoState()}
+        {getTodoOrUpdateForm()}
       </ul>
     </div>
   )
